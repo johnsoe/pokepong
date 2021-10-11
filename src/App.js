@@ -1,25 +1,44 @@
+import React from 'react';
 import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import PokeButton from './components/PokeButton'
+
+class App extends React.Component {
+
+  constructor() {
+    super();
+    this.state = { pokeData: null };
+  }
+
+  componentDidMount() {
+    console.log("Is this executing?")
+    axios.get("https://0e381d7a3m.execute-api.us-west-2.amazonaws.com/pp", {
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => {
+      console.log(res.data.body);
+      this.setState({pokeData: res.data.body});
+
+    })
+    .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className="pokelist pure-g">
+        { this.state.pokeData &&
+          this.state.pokeData.map(pokemon =>
+            <PokeButton pokemon={pokemon}/>
+          )
+        }
+        </div>
+
+      </div>
+    )
+  }
 }
 
 export default App;
