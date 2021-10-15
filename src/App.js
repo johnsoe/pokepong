@@ -2,8 +2,10 @@ import React from 'react';
 import logo from './logo.svg';
 import axios from 'axios';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
-import PokeButton from './components/PokeButton'
+import PokeList from './components/PokeList'
+import PokeProfile from './components/PokeProfile'
 
 class App extends React.Component {
 
@@ -13,7 +15,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log("Is this executing?")
     axios.get("https://0e381d7a3m.execute-api.us-west-2.amazonaws.com/pp", {
       headers: { 'Content-Type': 'application/json' }
     })
@@ -28,14 +29,16 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="pokelist pure-g">
-        { this.state.pokeData &&
-          this.state.pokeData.map(pokemon =>
-            <PokeButton pokemon={pokemon}/>
-          )
-        }
-        </div>
-
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <PokeList pokeData={this.state.pokeData}/>
+            </Route>
+            <Route exact path="/profile/:pokemonName">
+              <PokeProfile pokeData={this.state.pokeData}/>
+            </Route>
+          </Switch>
+        </Router>
       </div>
     )
   }

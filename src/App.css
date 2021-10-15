@@ -2,12 +2,15 @@
   position: relative;
   display: flex;
   text-align: center;
+}
+
+.pokelist {
   background: linear-gradient(#b1b7e9, #e99a9b);
   background-repeat: repeat;
   background-size: 115vw;
 }
 
-.App::before {
+.pokelist::before {
     content: "";
     background-image: url("assets/pokecupPattern.png");
     background-size: 120vw;
@@ -87,4 +90,80 @@ ul {
   height: auto;
   margin: auto;
   z-index: 2;
+}
+
+.poke-profile-container {
+  width: 100%;
+  height: 100%;
+  background: white;
+  margin: 0 auto;
+}
+
+.poke-profile {
+  max-width: 650px;
+  margin: auto;
+  overflow: auto;
+}
+
+.poke-profile-header {
+  max-height: 400px;
+}
+
+.poke-profile-img {
+  max-width: 85%
+}
+
+.type-normal {
+  background: #8f99a1
+}
+.type-fire {
+  background: #ff9c4b
+}
+.type-water {
+  background: #498ed7
+}
+.type-grass {
+  background: #60bd56
+}
+.type-electric {
+  background: #f4d322
+}
+.type-ice {
+  background: #71cfc1
+}
+.type-fighting {
+  background: #d03d68
+}
+.type-poison {
+  background: #ac67cb
+}
+.type-ground {
+  background: #db7740
+}
+.type-flying {
+  background: #91a9e0
+}
+.type-psychic {
+  background: #fb6f73
+}
+.type-bug {
+  background: #8fc315
+}
+.type-rock {
+  background: #c7b788
+}
+.type-dark {
+  background: #5a5267
+}
+.type-dragon {
+  background: #71cfc1
+}
+.type-steel {
+  background: #588da2
+}
+.type-ghost {
+  background: #5167ae
+}
+.type-fairy {
+  background: #ee8de8
 }
